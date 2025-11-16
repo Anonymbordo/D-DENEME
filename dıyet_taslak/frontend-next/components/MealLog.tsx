@@ -2,8 +2,12 @@
 
 import React, {useState, useEffect} from 'react'
 
-export default function MealLog({profile}){
-  const [logs, setLogs] = useState([])
+interface MealLogProps {
+  profile: any
+}
+
+export default function MealLog({profile}: MealLogProps){
+  const [logs, setLogs] = useState<any[]>([])
   const [text, setText] = useState('')
 
   useEffect(()=>{

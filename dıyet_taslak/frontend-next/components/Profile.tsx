@@ -3,9 +3,13 @@
 import React, {useState} from 'react'
 import {calcAll} from '@/utils/calculators'
 
-export default function Profile({onSave}){
+interface ProfileProps {
+  onSave: (profile: any) => void
+}
+
+export default function Profile({onSave}: ProfileProps){
   const [form, setForm] = useState({age:30, sex:'female', weight:70, height:170, pal:'moderate', meals_per_day:3, allergies:''})
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState<any>(null)
 
   function handleChange(e){
     const {name, value} = e.target
