@@ -3,7 +3,12 @@
 import React from 'react'
 import { Breakfast, Snack, Lunch, Dinner, Water, Logo } from '@/components/Icon'
 
-export default function Home({onNavigate, profile}){
+interface HomeProps {
+  onNavigate: (page: string) => void
+  profile: any
+}
+
+export default function Home({onNavigate, profile}: HomeProps){
   const kcal = profile?.computed?.energy_plan_kcal ?? 1739
   const target = profile ? `${Math.round(profile.weight)} kg` : '67 kg'
   const days = profile ? '50 GÜN' : '50 GÜN'
