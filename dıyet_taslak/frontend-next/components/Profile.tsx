@@ -8,7 +8,7 @@ interface ProfileProps {
 }
 
 export default function Profile({onSave}: ProfileProps){
-  const [form, setForm] = useState({age:30, sex:'female', weight:70, height:170, pal:'moderate', meals_per_day:3, allergies:''})
+  const [form, setForm] = useState({age:'30', sex:'female', weight:'70', height:'170', pal:'moderate', meals_per_day:'3', allergies:''})
   const [result, setResult] = useState<any>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>){
@@ -17,7 +17,15 @@ export default function Profile({onSave}: ProfileProps){
   }
 
   function runCalc(){
-    const parsed = {...form, age: parseInt(form.age,10), weight: parseFloat(form.weight), height: parseFloat(form.height), meals_per_day: parseInt(form.meals_per_day,10)}
+    const parsed = {
+      age: parseInt(form.age, 10),
+      sex: form.sex,
+      weight: parseFloat(form.weight),
+      height: parseFloat(form.height),
+      pal: form.pal,
+      meals_per_day: parseInt(form.meals_per_day, 10),
+      allergies: form.allergies
+    }
     const r = calcAll(parsed)
     setResult(r)
   }
